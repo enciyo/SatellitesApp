@@ -11,5 +11,7 @@ object Dependencies {
     const val room = "androidx.room:room-runtime:${Versions.room}"
     const val hilt = "com.google.dagger:hilt-android:${Versions.hilt}"
     const val coroutine = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutine}"
+    const val navigationComponent = "androidx.navigation:navigation-fragment-ktx:${Versions.navigationComponent}"
+    const val navigationComponentUi = "androidx.navigation:navigation-ui-ktx:${Versions.navigationComponent}"
 }
 

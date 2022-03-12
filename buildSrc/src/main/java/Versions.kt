@@ -10,5 +10,6 @@ object Versions {
     const val room = "2.4.2"
     const val hilt = "2.41"
     const val coroutine = "1.5.2"
+    const val navigationComponent = "2.4.1"
 }
 

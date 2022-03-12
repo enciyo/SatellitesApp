@@ -22,6 +22,7 @@ class FeatureModulePlugin : Plugin<Project> {
             implementation(Dependencies.constraintLayout)
             implementation(Dependencies.navigationComponent)
             implementation(Dependencies.navigationComponentUi)
+            implementation(Dependencies.viewBindingPropertyDelegate)
             testImplementation(TestDependencies.junit)
             androidTestImplementation(AndroidTestDependencies.jUnit)
             androidTestImplementation(AndroidTestDependencies.espresso)

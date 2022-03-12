@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/satellitesFragment"
-        android:name="com.enciyo.satellitesapp.ui.SatellitesFragment"
+        android:name="com.enciyo.satellitesapp.ui.satellites.SatellitesFragment"
         android:label="satellites_fragment"
         tools:layout="@layout/satellites_fragment" />
 </navigation>

@@ -32,5 +32,5 @@ android {
 }
 
 dependencies {
-
+    implementation(project(":shared"))
 }

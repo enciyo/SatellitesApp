@@ -13,5 +13,7 @@ object Dependencies {
     const val coroutine = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutine}"
     const val navigationComponent = "androidx.navigation:navigation-fragment-ktx:${Versions.navigationComponent}"
     const val navigationComponentUi = "androidx.navigation:navigation-ui-ktx:${Versions.navigationComponent}"
+    const val viewBindingPropertyDelegate = "com.github.kirich1409:viewbindingpropertydelegate-noreflection:${Versions.viewBindingPropertyDelegate}"
+    const val arrow  = "io.arrow-kt:arrow-core:${Versions.arrow}"
 }
 

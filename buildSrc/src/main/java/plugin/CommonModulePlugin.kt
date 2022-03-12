@@ -12,6 +12,7 @@ class CommonModulePlugin : Plugin<Project> {
         target.dependencies {
             implementation(depend.Dependencies.coroutine)
             implementation(depend.Dependencies.moshi)
+            implementation(depend.Dependencies.arrow)
         }
         target.addHilt()
     }

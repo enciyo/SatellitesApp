@@ -11,5 +11,7 @@ object Versions {
     const val hilt = "2.41"
     const val coroutine = "1.5.2"
     const val navigationComponent = "2.4.1"
+    const val viewBindingPropertyDelegate = "1.5.6"
+    const val arrow = "1.0.0"
 }
 

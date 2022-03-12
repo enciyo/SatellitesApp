@@ -7,7 +7,7 @@ import javax.inject.Inject
 class ResourceDataSource @Inject constructor(private val reader: RawReader) {
 
     suspend fun getSatellites(): List<Satellite> {
-        return reader.readList(R.raw.satellite_list, Satellite::class.java).orEmpty()
+        return reader.readList("satellite_list.json", Satellite::class.java).orEmpty()
     }
 
 

@@ -1,7 +1,6 @@
 package com.enciyo.data
 
 import android.content.Context
-import androidx.annotation.RawRes
 import com.enciyo.domain.model.SerializationException
 import com.enciyo.shared.IoDispatcher
 import com.squareup.moshi.Moshi
@@ -20,22 +19,25 @@ class RawReader @Inject constructor(
     private val moshi: Moshi,
 ) {
 
-    suspend fun <T> read(@RawRes id: Int, classs: Class<T>): T? = withContext(ioDispatcher) {
-        val reader = context.resources.openRawResource(id).bufferedReader().use { it.readText() }
+    suspend fun <T> read(fileName: String, `class`: Class<T>): T? = withContext(ioDispatcher) {
+        val jsonString = readText(fileName)
         return@withContext catchExceptionAndWrap {
-            moshi.adapter(classs).fromJson(reader)
+            moshi.adapter(`class`).fromJson(jsonString)
         }
     }
 
-    suspend fun <T> readList(@RawRes id: Int, classs: Class<T>): List<T>? =
+    suspend fun <T> readList(fileName: String, `class`: Class<T>): List<T>? =
         withContext(ioDispatcher) {
-            val types = Types.newParameterizedType(List::class.java, classs)
-            val reader =
-                context.resources.openRawResource(id).bufferedReader().use { it.readText() }
+            val types = Types.newParameterizedType(List::class.java, `class`)
+            val jsonString = readText(fileName)
             return@withContext catchExceptionAndWrap {
-                moshi.adapter<List<T>>(types).fromJson(reader)
+                moshi.adapter<List<T>>(types).fromJson(jsonString)
             }
         }
+
+    private fun readText(fileName: String): String {
+        return context.resources.assets.open(fileName).bufferedReader().use { it.readText() }
+    }
 
     private fun <T> catchExceptionAndWrap(block: () -> T): T {
         try {

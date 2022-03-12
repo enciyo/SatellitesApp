@@ -6,5 +6,7 @@ object Versions {
     const val jUnit = "4.13.2"
     const val jUnitAndroid = "1.1.3"
     const val espresso = "3.4.0"
+    const val moshi = "1.12.0"
+    const val room = "2.4.2"
 }
 

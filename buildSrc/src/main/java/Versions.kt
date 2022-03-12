@@ -9,5 +9,6 @@ object Versions {
     const val moshi = "1.12.0"
     const val room = "2.4.2"
     const val hilt = "2.41"
+    const val coroutine = "1.5.2"
 }
 

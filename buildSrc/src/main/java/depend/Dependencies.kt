@@ -10,5 +10,6 @@ object Dependencies {
     const val moshi = "com.squareup.moshi:moshi-kotlin:${Versions.moshi}"
     const val room = "androidx.room:room-runtime:${Versions.room}"
     const val hilt = "com.google.dagger:hilt-android:${Versions.hilt}"
+    const val coroutine = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutine}"
 }
 

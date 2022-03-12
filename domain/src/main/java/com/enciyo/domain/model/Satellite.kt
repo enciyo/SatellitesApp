@@ -1,4 +1,4 @@
-package com.enciyo.data.model
+package com.enciyo.domain.model
 
 
 data class Satellite(

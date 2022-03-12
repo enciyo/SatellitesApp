@@ -16,3 +16,4 @@ rootProject.name = "SatellitesApp"
 include ':app'
 include ':data'
 include ':shared'
+include ':domain'

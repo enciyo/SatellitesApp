@@ -1,6 +1,8 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("module-plugin")
+    id("feature-plugin")
 }
 
 android {
@@ -36,11 +38,4 @@ android {
 
 dependencies {
 
-    implementation(Dependencies.coreKtx)
-    implementation(Dependencies.appCompat)
-    implementation(Dependencies.material)
-    implementation(Dependencies.constraintLayout)
-    testImplementation(TestDependencies.junit)
-    androidTestImplementation(AndroidTestDependencies.jUnit)
-    androidTestImplementation(AndroidTestDependencies.espresso)
 }

@@ -8,5 +8,6 @@ object Versions {
     const val espresso = "3.4.0"
     const val moshi = "1.12.0"
     const val room = "2.4.2"
+    const val hilt = "2.41"
 }
 

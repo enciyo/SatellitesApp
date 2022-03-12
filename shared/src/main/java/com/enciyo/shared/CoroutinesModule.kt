@@ -7,11 +7,8 @@ import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.Job
 
-
-@ExperimentalCoroutinesApi
 @Module
 @InstallIn(SingletonComponent::class)
 object CoroutinesModule {

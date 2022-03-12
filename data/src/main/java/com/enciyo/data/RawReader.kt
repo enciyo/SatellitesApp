@@ -7,17 +7,16 @@ import com.enciyo.shared.IoDispatcher
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
 import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
-import java.lang.Exception
 import javax.inject.Inject
 import javax.inject.Singleton
-import kotlin.coroutines.CoroutineContext
 
 
 @Singleton
 class RawReader @Inject constructor(
     @ApplicationContext private val context: Context,
-    @IoDispatcher val ioDispatcher: CoroutineContext,
+    @IoDispatcher val ioDispatcher: CoroutineDispatcher,
     private val moshi: Moshi,
 ) {
 
@@ -28,11 +27,15 @@ class RawReader @Inject constructor(
         }
     }
 
-    suspend fun <T> readList(@RawRes id: Int, classs: Class<T>): List<T>? = withContext(ioDispatcher) {
-        val types = Types.newParameterizedType(List::class.java, classs)
-        val reader = context.resources.openRawResource(id).bufferedReader().use { it.readText() }
-        return@withContext moshi.adapter<List<T>>(types).fromJson(reader)
-    }
+    suspend fun <T> readList(@RawRes id: Int, classs: Class<T>): List<T>? =
+        withContext(ioDispatcher) {
+            val types = Types.newParameterizedType(List::class.java, classs)
+            val reader =
+                context.resources.openRawResource(id).bufferedReader().use { it.readText() }
+            return@withContext catchExceptionAndWrap {
+                moshi.adapter<List<T>>(types).fromJson(reader)
+            }
+        }
 
     private fun <T> catchExceptionAndWrap(block: () -> T): T {
         try {

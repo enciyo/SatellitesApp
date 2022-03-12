@@ -32,7 +32,6 @@ android {
 }
 
 dependencies {
-    implementation(depend.Dependencies.moshi)
     implementation(depend.Dependencies.room)
     implementation(project(mapOf("path" to ":domain")))
     kapt(Kapt.room)

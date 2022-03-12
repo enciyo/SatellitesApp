@@ -11,6 +11,7 @@ class CommonModulePlugin : Plugin<Project> {
         target.plugins.apply("kotlin-kapt")
         target.dependencies {
             implementation(depend.Dependencies.coroutine)
+            implementation(depend.Dependencies.moshi)
         }
         target.addHilt()
     }

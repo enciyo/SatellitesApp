@@ -6,6 +6,7 @@ plugins {
 }
 
 android {
+
     compileSdk = Config.compileSdk
 
     defaultConfig {
@@ -46,6 +47,15 @@ android {
     kotlinOptions {
         jvmTarget = Options.jvmTarget
     }
+
+    applicationVariants.forEach {
+        it.outputs.all {
+            if (name.contains("release"))
+                (this as com.android.build.gradle.internal.api.BaseVariantOutputImpl).outputFileName =
+                    "apk/$name.apk"
+        }
+    }
+
 }
 
 dependencies {

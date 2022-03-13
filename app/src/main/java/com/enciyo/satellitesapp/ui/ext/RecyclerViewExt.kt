@@ -187,7 +187,3 @@ fun Fragment.linearLayoutManager(isHorizontal: Boolean = false): Lazy<LinearLayo
         false
     )
 }
-
-fun <T : Any> Boolean.take(takeTrue: T, takeFalse: T): T {
-    return if (this) takeTrue else takeFalse
-}

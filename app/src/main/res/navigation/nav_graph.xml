@@ -9,5 +9,22 @@
         android:id="@+id/satellitesFragment"
         android:name="com.enciyo.satellitesapp.ui.satellites.SatellitesFragment"
         android:label="satellites_fragment"
-        tools:layout="@layout/satellites_fragment" />
+        tools:layout="@layout/satellites_fragment">
+        <action
+            android:id="@+id/action_satellitesFragment_to_satelliteDetailFragment"
+            app:destination="@id/satelliteDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/satelliteDetailFragment"
+        android:name="com.enciyo.satellitesapp.ui.detail.SatelliteDetailFragment"
+        android:label="satellite_detail_fragment"
+        tools:layout="@layout/satellite_detail_fragment">
+        <argument
+            android:name="id"
+            app:argType="integer" />
+
+        <argument
+            android:name="name"
+            app:argType="string" />
+    </fragment>
 </navigation>

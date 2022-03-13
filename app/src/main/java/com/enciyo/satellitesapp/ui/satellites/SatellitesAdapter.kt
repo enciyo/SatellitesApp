@@ -13,7 +13,9 @@ import com.enciyo.satellitesapp.databinding.ItemSatelliteBinding
 import com.enciyo.satellitesapp.ui.ext.take
 
 
-class SatellitesAdapter : ListAdapter<Satellite, SatellitesAdapter.SatellitesViewHolder>(DIFF),
+class SatellitesAdapter(
+    private val onClick: (Satellite) -> Unit,
+) : ListAdapter<Satellite, SatellitesAdapter.SatellitesViewHolder>(DIFF),
     Filterable {
 
     private var originalList = listOf<Satellite>()
@@ -49,6 +51,9 @@ class SatellitesAdapter : ListAdapter<Satellite, SatellitesAdapter.SatellitesVie
                     takeTrue = ctx.getString(R.string.active),
                     takeFalse = ctx.getString(R.string.passive)
                 )
+                root.setOnClickListener {
+                    onClick.invoke(data)
+                }
             }
 
         }

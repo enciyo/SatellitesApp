@@ -4,4 +4,7 @@
     <string name="passive">Passive</string>
     <string name="search">Search</string>
     <string name="not_found">Not Found</string>
+    <string name="cost">Cost:</string>
+    <string name="heightAndMass">Height/Mass:</string>
+    <string name="lastPosition">Last Position:</string>
 </resources>

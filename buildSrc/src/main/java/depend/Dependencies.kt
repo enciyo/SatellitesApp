@@ -9,6 +9,7 @@ object Dependencies {
     const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
     const val moshi = "com.squareup.moshi:moshi-kotlin:${Versions.moshi}"
     const val room = "androidx.room:room-runtime:${Versions.room}"
+    const val roomKtx = "androidx.room:room-ktx:${Versions.room}"
     const val hilt = "com.google.dagger:hilt-android:${Versions.hilt}"
     const val coroutine = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutine}"
     const val navigationComponent = "androidx.navigation:navigation-fragment-ktx:${Versions.navigationComponent}"

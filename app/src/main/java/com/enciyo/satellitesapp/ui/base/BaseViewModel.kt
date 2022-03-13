@@ -30,23 +30,20 @@ abstract class BaseViewModel : ViewModel() {
                 when (it) {
                     is Either.Left -> {
                         //Show UI or record to Firebase
-                        Log.i("MyLogger",it.value.message.orEmpty())
+                        Log.i("MyLogger", it.value.message.orEmpty())
                     }
                     is Either.Right -> consumer.invoke(it.value)
                 }
 
             }
             .onStart {
-                if (isShowLoading) {
-                    _loading.value = true
-                }
+                if (isShowLoading) _loading.value = true
             }
             .onCompletion {
-                if (isShowLoading) {
-                    _loading.value = false
-                }
+                if (isShowLoading) _loading.value = false
             }
             .launchIn(viewModelScope)
     }
+
 
 }

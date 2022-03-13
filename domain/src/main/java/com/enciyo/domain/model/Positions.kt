@@ -10,6 +10,6 @@ data class Positions(
 )
 
 data class Position(
-    val posX: Long,
-    val posY: Long,
+    val posX: Double,
+    val posY: Double,
 )

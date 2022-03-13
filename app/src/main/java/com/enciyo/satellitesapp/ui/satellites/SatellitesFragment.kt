@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.enciyo.domain.model.Satellite
 import com.enciyo.satellitesapp.R
 import com.enciyo.satellitesapp.databinding.SatellitesFragmentBinding
@@ -24,7 +25,7 @@ class SatellitesFragment : BaseFragment<SatellitesFragmentBinding, SatellitesVie
     vmClass = SatellitesViewModel::class
 ) {
 
-    private val adapter by lazy { SatellitesAdapter() }
+    private val adapter by lazy { SatellitesAdapter(::onClicked) }
     private val layoutManager by linearLayoutManager()
     private val itemDecoration by dividerDecoration()
 
@@ -32,7 +33,11 @@ class SatellitesFragment : BaseFragment<SatellitesFragmentBinding, SatellitesVie
         super.onViewCreated(view, savedInstanceState)
 
         with(binding) {
-            satellites.attach(adapter, layoutManager, itemDecoration)
+            satellites.attach(
+                adapter = adapter,
+                layoutManager = layoutManager,
+                decorator = itemDecoration
+            )
             searchView.queryTextChanges()
                 .onEach(adapter.filter::filter)
                 .launchIn(viewLifecycleOwner.lifecycleScope)
@@ -41,7 +46,13 @@ class SatellitesFragment : BaseFragment<SatellitesFragmentBinding, SatellitesVie
         with(vm) {
             satellites.observe(viewLifecycleOwner, ::observeSatellites)
         }
+    }
 
+    private fun onClicked(satellite: Satellite) {
+        SatellitesFragmentDirections.actionSatellitesFragmentToSatelliteDetailFragment(
+            id = satellite.id,
+            name = satellite.name
+        ).also(findNavController()::navigate)
     }
 
     private fun observeSatellites(result: List<Satellite>) {

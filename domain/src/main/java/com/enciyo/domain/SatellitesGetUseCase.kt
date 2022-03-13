@@ -10,8 +10,7 @@ class SatellitesGetUseCase @Inject constructor(
     @IoDispatcher private val ioDispatcher: CoroutineDispatcher,
     private val repository: Repository,
 ) : BaseUseCase<Any, List<Satellite>>(ioDispatcher) {
-    override suspend fun execute(parameters: Any?): List<Satellite> {
-        return repository.getSatellites()
-    }
+    override suspend fun execute(parameters: Any): List<Satellite> =
+        repository.getSatellites()
 
 }

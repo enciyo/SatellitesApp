@@ -1,10 +1,10 @@
 package com.enciyo.satellitesapp.ui.satellites
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.enciyo.domain.SatellitesGetUseCase
 import com.enciyo.domain.model.Satellite
 import com.enciyo.satellitesapp.ui.base.BaseViewModel
+import com.enciyo.satellitesapp.ui.ext.toLiveData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -14,15 +14,14 @@ class SatellitesViewModel @Inject constructor(
 ) : BaseViewModel() {
 
     private val _satellites = MutableLiveData<List<Satellite>>()
-    val satellites = _satellites as LiveData<List<Satellite>>
+    val satellites = _satellites.toLiveData()
 
     init {
         getSatellites()
     }
 
     private fun getSatellites() {
-        satellitesGetUseCase.invoke()
-            .handle(consumer = _satellites::setValue)
+        satellitesGetUseCase.invoke("").handle(consumer = _satellites::setValue)
     }
 
 }

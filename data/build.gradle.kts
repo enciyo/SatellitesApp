@@ -33,6 +33,7 @@ android {
 
 dependencies {
     implementation(depend.Dependencies.room)
+    implementation(depend.Dependencies.roomKtx)
     implementation(project(mapOf("path" to ":domain")))
     kapt(Kapt.room)
     implementation(project(":shared"))

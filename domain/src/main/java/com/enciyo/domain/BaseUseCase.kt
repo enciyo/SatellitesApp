@@ -15,9 +15,9 @@ abstract class BaseUseCase<in I, out O>(
     private val ioDispatcher: CoroutineDispatcher,
 ) {
 
-    operator fun invoke(input: I? = null): Flow<Either<Exception, O>> {
+    operator fun invoke(input: I): Flow<Either<Exception, O>> {
         return flow<Either<Exception, O>> {
-            delay(500)
+            delay(500) // For show loading state
             emit(Either.Right(execute(input)))
         }
             .flowOn(ioDispatcher)
@@ -26,6 +26,6 @@ abstract class BaseUseCase<in I, out O>(
             }
     }
 
-    abstract suspend fun execute(parameters: I? = null): O
+    abstract suspend fun execute(parameters: I): O
 
 }

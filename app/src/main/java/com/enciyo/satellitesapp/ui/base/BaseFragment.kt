@@ -18,18 +18,13 @@ abstract class BaseFragment<V : ViewBinding, VM : BaseViewModel>(
     protected val binding by viewBinding(vbFactory, onViewDestroyed = ::onClearReferences)
     protected val vm by viewModels(vmClass)
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        vm.loading.observe(viewLifecycleOwner,::loadingState)
+        vm.loading.observe(viewLifecycleOwner, ::loadingState)
     }
 
     protected open fun onClearReferences(safeBinding: V) = Unit
 
-
-    protected open fun loadingState(isVisible: Boolean){
-
-    }
+    protected open fun loadingState(isVisible: Boolean) = Unit
 
 }

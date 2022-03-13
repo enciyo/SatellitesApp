@@ -1,5 +1,6 @@
 package com.enciyo.satellitesapp.ui.detail
 
+import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.enciyo.domain.SatelliteDetailGetUseCase
@@ -7,18 +8,20 @@ import com.enciyo.domain.SatelliteDetailPositionGetUseCase
 import com.enciyo.domain.model.Position
 import com.enciyo.domain.model.SatelliteDetail
 import com.enciyo.satellitesapp.ui.base.BaseViewModel
-import com.enciyo.satellitesapp.ui.ext.toLiveData
+import com.enciyo.satellitesapp.ext.toLiveData
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.isActive
+import org.jetbrains.annotations.TestOnly
 import javax.inject.Inject
 
 @HiltViewModel
-class SatelliteDetailViewModel @Inject constructor(
+open class SatelliteDetailViewModel @Inject constructor(
     private val satelliteDetailGetUseCase: SatelliteDetailGetUseCase,
     private val satelliteDetailPositionGetUseCase: SatelliteDetailPositionGetUseCase,
 ) : BaseViewModel() {
@@ -28,6 +31,9 @@ class SatelliteDetailViewModel @Inject constructor(
 
     private val _lastPosition = MutableLiveData<Position>()
     val lastPosition = _lastPosition.toLiveData()
+
+    @VisibleForTesting
+    var oneTime: Boolean = false
 
     fun getById(id: Int) {
         satelliteDetailGetUseCase.invoke(SatelliteDetailGetUseCase.Request(id))
@@ -41,15 +47,16 @@ class SatelliteDetailViewModel @Inject constructor(
     }
 
     private fun startRetryOperation(positions: List<Position>) {
-        positions.asFlow()
+         positions.asFlow()
             .onEach {
                 _lastPosition.value = it
                 delay(3000)
             }
             .onCompletion {
-                if (viewModelScope.isActive) startRetryOperation(positions)
+                if (viewModelScope.isActive && oneTime.not()) startRetryOperation(positions)
             }
             .launchIn(viewModelScope)
+
     }
 
 

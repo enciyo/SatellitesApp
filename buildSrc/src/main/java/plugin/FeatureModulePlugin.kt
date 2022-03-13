@@ -23,9 +23,15 @@ class FeatureModulePlugin : Plugin<Project> {
             implementation(Dependencies.navigationComponent)
             implementation(Dependencies.navigationComponentUi)
             implementation(Dependencies.viewBindingPropertyDelegate)
+
             testImplementation(TestDependencies.junit)
+            testImplementation(TestDependencies.mockk)
+            testImplementation(TestDependencies.androidxCore)
+            testImplementation(TestDependencies.coroutine)
+
             androidTestImplementation(AndroidTestDependencies.jUnit)
             androidTestImplementation(AndroidTestDependencies.espresso)
+            androidTestImplementation(AndroidTestDependencies.uiautomator)
         }
     }
 }

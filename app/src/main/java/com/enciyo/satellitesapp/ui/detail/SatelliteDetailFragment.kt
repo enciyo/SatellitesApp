@@ -9,7 +9,7 @@ import com.enciyo.domain.model.SatelliteDetail
 import com.enciyo.satellitesapp.R
 import com.enciyo.satellitesapp.databinding.SatelliteDetailFragmentBinding
 import com.enciyo.satellitesapp.ui.base.BaseFragment
-import com.enciyo.satellitesapp.ui.ext.toBold
+import com.enciyo.satellitesapp.ext.toBold
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.NumberFormat
 

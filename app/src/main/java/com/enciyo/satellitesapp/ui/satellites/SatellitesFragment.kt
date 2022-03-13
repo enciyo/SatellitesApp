@@ -9,11 +9,11 @@ import com.enciyo.domain.model.Satellite
 import com.enciyo.satellitesapp.R
 import com.enciyo.satellitesapp.databinding.SatellitesFragmentBinding
 import com.enciyo.satellitesapp.ui.base.BaseFragment
-import com.enciyo.satellitesapp.ui.ext.attach
-import com.enciyo.satellitesapp.ui.ext.detach
-import com.enciyo.satellitesapp.ui.ext.dividerDecoration
-import com.enciyo.satellitesapp.ui.ext.linearLayoutManager
-import com.enciyo.satellitesapp.ui.ext.queryTextChanges
+import com.enciyo.satellitesapp.ext.attach
+import com.enciyo.satellitesapp.ext.detach
+import com.enciyo.satellitesapp.ext.dividerDecoration
+import com.enciyo.satellitesapp.ext.linearLayoutManager
+import com.enciyo.satellitesapp.ext.queryTextChanges
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -45,6 +45,7 @@ class SatellitesFragment : BaseFragment<SatellitesFragmentBinding, SatellitesVie
 
         with(vm) {
             satellites.observe(viewLifecycleOwner, ::observeSatellites)
+            getSatellites()
         }
     }
 

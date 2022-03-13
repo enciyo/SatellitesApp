@@ -31,6 +31,14 @@ android {
         viewBinding = true
     }
 
+    testOptions {
+        unitTests.isReturnDefaultValues = true
+    }
+
+    hilt {
+        enableTransformForLocalTests = true
+    }
+
     compileOptions {
         sourceCompatibility = Options.sourceCompatibility
         targetCompatibility = Options.targetCompatibility

@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.enciyo.domain.model.Satellite
 import com.enciyo.satellitesapp.R
 import com.enciyo.satellitesapp.databinding.ItemSatelliteBinding
-import com.enciyo.satellitesapp.ui.ext.take
+import com.enciyo.satellitesapp.ext.take
 
 
 class SatellitesAdapter(

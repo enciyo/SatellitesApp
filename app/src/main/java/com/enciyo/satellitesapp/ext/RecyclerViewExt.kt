@@ -1,4 +1,4 @@
-package com.enciyo.satellitesapp.ui.ext
+package com.enciyo.satellitesapp.ext
 
 import android.graphics.Canvas
 import android.graphics.Rect

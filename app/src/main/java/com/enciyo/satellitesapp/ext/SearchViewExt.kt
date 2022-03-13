@@ -1,4 +1,4 @@
-package com.enciyo.satellitesapp.ui.ext
+package com.enciyo.satellitesapp.ext
 
 import androidx.annotation.CheckResult
 import androidx.appcompat.widget.SearchView
@@ -8,9 +8,6 @@ import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.distinctUntilChanged
-import kotlinx.coroutines.flow.drop
-import kotlinx.coroutines.flow.filter
-import java.time.Duration
 
 
 @CheckResult

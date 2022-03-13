@@ -20,7 +20,6 @@ abstract class BaseUseCase<in I, out O>(
             delay(500) // For show loading state
             emit(Either.Right(execute(input)))
         }
-            .flowOn(ioDispatcher)
             .catch { e ->
                 emit(Either.Left(Exception(e.message.orEmpty())))
             }

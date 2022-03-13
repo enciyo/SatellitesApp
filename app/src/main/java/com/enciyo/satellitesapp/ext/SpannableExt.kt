@@ -1,12 +1,10 @@
-package com.enciyo.satellitesapp.ui.ext
+package com.enciyo.satellitesapp.ext
 
 import android.graphics.Typeface
 import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.Spanned
 import android.text.style.StyleSpan
-import android.text.style.URLSpan
-import android.text.style.UnderlineSpan
 
 
 fun String.toBold(boldText: String): Spannable {

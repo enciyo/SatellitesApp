@@ -15,12 +15,14 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import javax.inject.Singleton
 
 
 @InstallIn(SingletonComponent::class)
 @Module
 class DataModule {
     @Provides
+    @Singleton
     fun provideMoshi() = Moshi.Builder()
         .add(DateStringAdapter())
         .add(KotlinJsonAdapterFactory())
@@ -28,6 +30,7 @@ class DataModule {
 
 
     @Provides
+    @Singleton
     fun provideRepository(
         resourceDataSource: ResourceDataSource,
         localDataSource: LocalDataSource,
@@ -35,6 +38,7 @@ class DataModule {
 
 
     @Provides
+    @Singleton
     fun provideRoomDatabase(@ApplicationContext context: Context) =
         Room.databaseBuilder(context, SatellitesDatabase::class.java, "DB_NAME") // fix for security
             .fallbackToDestructiveMigration()
